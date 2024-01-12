@@ -6,9 +6,9 @@ type ReviewsResponse = {
 };
 
 const useFetch = (url: string) => {
-	const [reviews, setData] = useState<ReviewWithCompanyAndReviewer[]>([]);
-	const [error, setError] = useState('null');
 	const [loading, setLoading] = useState(true);
+	const [reviews, setData] = useState<ReviewWithCompanyAndReviewer[]>([]);
+	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
