@@ -21,7 +21,11 @@ const useFetch = (url: string) => {
 				setData(json.reviews);
 				setLoading(false);
 			} catch (error) {
-				setError('something went wrong:' + error);
+				// Use some logging tool like Sentry/Datadog/LogRocket to log error
+				console.log(error);
+				setError(
+					'Something went wrong while loading the reviews. Our team has been notified, but in the meantime try reloading the page.',
+				);
 				setLoading(false);
 			}
 		};
