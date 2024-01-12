@@ -81,14 +81,43 @@ describe('ReviewsController', () => {
 	});
 
 	describe('getReviews()', () => {
-		it.todo('should fetch all reviews');
+		it('should fetch all reviews', async () => {
+			const response = await request(app.getHttpServer()).get('/reviews/');
+			expect(response.status).toBe(200);
+			expect(response.body.reviews.length).toBe(3);
+		});
 
-		it.todo('should fetch reviews in descending order by date');
+		it('should fetch reviews in descending order by date', async () => {
+			const response = await request(app.getHttpServer()).get('/reviews/');
+			response.body.reviews.reduce((previousTime, review) => {
+				const reviewCreationTime = new Date(review.createdOn).getTime();
+				expect(reviewCreationTime).toBeLessThan(previousTime);
+				return reviewCreationTime;
+			}, Date.now());
+		});
 
-		it.todo('should include user data with review');
+		it('should include user data with review', async () => {
+			const response = await request(app.getHttpServer()).get('/reviews/');
+			const firstReview = response.body.reviews[0];
 
-		it.todo('should include company data with review');
+			expect(Object.keys(firstReview).includes('user')).toBe(true);
 
-		// Feel free to add any additional tests you think are necessary
+			const userKeys = Object.keys(firstReview.user);
+			expect(userKeys.includes('id')).toBe(true);
+			expect(userKeys.includes('firstName')).toBe(true);
+			expect(userKeys.includes('lastName')).toBe(true);
+			expect(userKeys.includes('email')).toBe(true);
+		});
+
+		it('should include company data with review', async () => {
+			const response = await request(app.getHttpServer()).get('/reviews/');
+			const firstReview = response.body.reviews[0];
+
+			expect(Object.keys(firstReview).includes('company')).toBe(true);
+
+			const userKeys = Object.keys(firstReview.company);
+			expect(userKeys.includes('id')).toBe(true);
+			expect(userKeys.includes('name')).toBe(true);
+		});
 	});
 });
