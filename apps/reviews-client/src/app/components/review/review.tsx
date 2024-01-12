@@ -34,7 +34,7 @@ export function Review(props: ReviewProps) {
 		<Card sx={{ margin: '16px', display: 'flex' }}>
 			<div style={{ width: 'fit-content', padding: '16px' }}>
 				<div style={{ textWrap: 'nowrap' }}>{reviewer}</div>
-				<Rating value={review.rating} />
+				<Rating value={review.rating} readOnly />
 				<div>{date}</div>
 				<br />
 				<div style={{ display: 'flex' }}>
