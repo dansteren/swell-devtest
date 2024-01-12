@@ -1,4 +1,4 @@
-import { Card, Rating } from '@mui/material';
+import { Card, Grid, Rating } from '@mui/material';
 import LocationIcon from '@mui/icons-material/LocationOn';
 
 export interface ReviewWithCompanyAndReviewer {
@@ -31,18 +31,24 @@ export function Review(props: ReviewProps) {
 	const companyName = review.company.name;
 
 	return (
-		<Card sx={{ margin: '16px', display: 'flex' }}>
-			<div style={{ width: 'fit-content', padding: '16px' }}>
-				<div style={{ textWrap: 'nowrap' }}>{reviewer}</div>
-				<Rating value={review.rating} readOnly />
-				<div>{date}</div>
-				<br />
-				<div style={{ display: 'flex' }}>
-					<LocationIcon />
-					<div>{companyName}</div>
-				</div>
-			</div>
-			<span style={{ width: '100%', padding: '16px' }}>{review.reviewText}</span>
+		<Card sx={{ margin: '16px 0px' }}>
+			<Grid container>
+				<Grid item xs={12} md={3} sx={{ padding: '16px' }}>
+					<div>
+						<strong>{reviewer}</strong>
+					</div>
+					<Rating value={review.rating} readOnly />
+					<div>{date}</div>
+					<br />
+					<div style={{ display: 'flex' }}>
+						<LocationIcon />
+						{companyName}
+					</div>
+				</Grid>
+				<Grid item xs={12} md={9} sx={{ padding: '16px' }}>
+					{review.reviewText}
+				</Grid>
+			</Grid>
 		</Card>
 	);
 }
