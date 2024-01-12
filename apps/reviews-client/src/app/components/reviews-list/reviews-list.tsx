@@ -2,10 +2,7 @@ import Review from '../review/review';
 import useFetch from '../../hooks/useFetch';
 import { Alert, LinearProgress, Rating } from '@mui/material';
 
-/* eslint-disable-next-line */
-export interface ReviewsListProps {}
-
-export function ReviewsList(props: ReviewsListProps) {
+export function ReviewsList() {
 	const { loading, reviews, error } = useFetch('http://localhost:3333/api/reviews');
 
 	if (loading) return <LinearProgress />;
