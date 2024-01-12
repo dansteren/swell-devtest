@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ReviewWithCompanyAndReviewer } from '../components/review/review';
+import { ReviewWithCompanyAndReviewer } from '../review/review';
 
 type ReviewsResponse = {
 	reviews: ReviewWithCompanyAndReviewer[];

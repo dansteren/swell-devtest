@@ -1,5 +1,5 @@
 import Review from '../review/review';
-import useFetch from '../../hooks/useFetch';
+import useFetch from './useFetchHook';
 import { Alert, LinearProgress, Rating } from '@mui/material';
 
 export function ReviewsList() {
