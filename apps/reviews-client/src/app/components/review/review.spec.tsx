@@ -1,10 +1,28 @@
-// import { render } from '@testing-library/react';
-// import Review from './review';
+import { render } from '@testing-library/react';
+import Review from './review';
 
 describe('Review', () => {
 	it('should render successfully', () => {
-		// const { baseElement } = render(<Review />);
-		// expect(baseElement).toBeTruthy();
+		const review = {
+			id: '70eafa74-31ac-4e3e-ac11-79c06b25ec29',
+			reviewerId: '2625f5b9-d6fc-443c-a5ca-e438ffc959ca',
+			companyId: '3880e9ff-036a-4a16-9fd5-957e2c29bb2b',
+			reviewText: 'Praesent blandit lacinia erat.',
+			rating: 5,
+			createdOn: '2022-08-30T15:59:19Z',
+			user: {
+				id: '2625f5b9-d6fc-443c-a5ca-e438ffc959ca',
+				firstName: 'Nicki',
+				lastName: 'Shyre',
+				email: 'nshyre17@instagram.com',
+			},
+			company: {
+				id: '3880e9ff-036a-4a16-9fd5-957e2c29bb2b',
+				name: 'Russel, Orn and Jacobson',
+			},
+		};
+		const { baseElement } = render(<Review review={review} />);
+		expect(baseElement).toBeTruthy();
 	});
 
 	it.todo('should render list of reviews');
