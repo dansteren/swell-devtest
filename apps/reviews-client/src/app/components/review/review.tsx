@@ -40,9 +40,9 @@ export function Review(props: ReviewProps) {
 					<Rating data-testid="review__rating" value={review.rating} readOnly />
 					<div data-testid="review__date">{date}</div>
 					<br />
-					<div data-testid="review__company" style={{ display: 'flex' }}>
+					<div style={{ display: 'flex' }}>
 						<LocationIcon />
-						{companyName}
+						<span data-testid="review__company">{companyName}</span>
 					</div>
 				</Grid>
 				<Grid item data-testid="review__text" xs={12} md={9} sx={{ padding: '16px' }}>
