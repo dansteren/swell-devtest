@@ -31,21 +31,21 @@ export function Review(props: ReviewProps) {
 	const companyName = review.company.name;
 
 	return (
-		<Card sx={{ margin: '16px 0px' }}>
+		<Card data-testid="review" sx={{ margin: '16px 0px' }}>
 			<Grid container>
 				<Grid item xs={12} md={3} sx={{ padding: '16px' }}>
 					<div>
-						<strong>{reviewer}</strong>
+						<strong data-testid="review__reviewer">{reviewer}</strong>
 					</div>
-					<Rating value={review.rating} readOnly />
-					<div>{date}</div>
+					<Rating data-testid="review__rating" value={review.rating} readOnly />
+					<div data-testid="review__date">{date}</div>
 					<br />
-					<div style={{ display: 'flex' }}>
+					<div data-testid="review__company" style={{ display: 'flex' }}>
 						<LocationIcon />
 						{companyName}
 					</div>
 				</Grid>
-				<Grid item xs={12} md={9} sx={{ padding: '16px' }}>
+				<Grid item data-testid="review__text" xs={12} md={9} sx={{ padding: '16px' }}>
 					{review.reviewText}
 				</Grid>
 			</Grid>
