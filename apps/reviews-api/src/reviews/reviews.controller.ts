@@ -8,10 +8,6 @@ export class ReviewsController {
 
 	@Get()
 	async getReviews(): Promise<ReviewsResponse> {
-		// TODO:
-		// - pagination
-		// - filtering
-		// - sorting
 		const reviews = await this.reviewsService.getAllReviews();
 		return { reviews };
 	}
